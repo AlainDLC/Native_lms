@@ -1,4 +1,4 @@
-# E-Learning App with React Native, Expo, HyGraph, and GraphQL
+# React Native, Expo, HyGraph, and GraphQL LMS
 
 ## Overview
 
