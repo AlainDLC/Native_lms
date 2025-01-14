@@ -1,19 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
-import LoginScreen from "./App/LoginScreen";
-import {
-  ClerkProvider,
-  ClerkLoaded,
-  SignedIn,
-  SignedOut,
-} from "@clerk/clerk-expo";
 
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
+import LoginScreen from "./App/Screen/LoginScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import Tabnavigation from "./App/Navigations/Tabnavigation";
+const key = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 export default function App() {
-  const key = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
   return (
     <ClerkProvider publishableKey={key || ""}>
       <View style={styles.container}>
         <SignedIn>
-          <Text>You are Sign in</Text>
+          <Tabnavigation />
         </SignedIn>
         <SignedOut>
           <LoginScreen />

@@ -1,8 +1,8 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import React, { Component } from "react";
-import app from "./../../assets/images/kaw.jpg";
-import google from "./../../assets/images/google.png";
-import Color from "./Utils/Color";
+import app from "../../../assets/images/kaw.jpg";
+import google from "../../../assets/images/google.png";
+import Color from "../Utils/Color";
 import * as WebBrowser from "expo-web-browser";
 import { useOAuth } from "@clerk/clerk-expo";
 import * as Linking from "expo-linking";
