@@ -2,8 +2,7 @@
 
 ## Overview
 
-Welcome to the project! This guide will walk you through the process of building a cutting-edge **E-Learning app** using **React Native**, **Expo**, **HyGraph**, and **GraphQL**. In this step-by-step guide, you will learn how to integrate these powerful technologies to create a dynamic and feature-rich application designed for modern learners.
-
+Welcome to the project! **React Native**, **Expo**, **HyGraph**, and **GraphQL**
 ## Technologies Used
 
 - **React Native**: A framework for building native mobile apps using React.
