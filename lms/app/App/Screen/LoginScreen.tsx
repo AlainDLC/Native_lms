@@ -1,5 +1,5 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import React, { Component } from "react";
+import React from "react";
 import app from "../../../assets/images/kaw.jpg";
 import google from "../../../assets/images/google.png";
 import Color from "../Utils/Color";
