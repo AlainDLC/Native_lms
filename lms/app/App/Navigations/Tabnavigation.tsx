@@ -9,6 +9,7 @@ import Profil from "../Screen/ProfilScreen";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import HomeScreenNavigation from "./HomeScreenNavigation";
 
 const Tab = createBottomTabNavigator();
 export default function Tabnavigation() {
@@ -20,7 +21,7 @@ export default function Tabnavigation() {
     >
       <Tab.Screen
         name="home"
-        component={HomeScreen}
+        component={HomeScreenNavigation}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="home" size={size} color={color} />

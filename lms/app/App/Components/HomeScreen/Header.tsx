@@ -31,13 +31,13 @@ export default function Header() {
         <View
           style={{
             backgroundColor: Color.WHITE,
-            padding: 15,
+            padding: 5,
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
             borderRadius: 40,
             paddingRight: 15,
-            marginTop: 25,
+            marginTop: 20,
           }}
         >
           <TextInput placeholder="Search Courses" style={{ fontSize: 18 }} />
