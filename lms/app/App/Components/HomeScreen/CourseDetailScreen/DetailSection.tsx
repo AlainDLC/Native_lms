@@ -1,7 +1,16 @@
-import { View, Text, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { Course } from "@/interface/course";
 import Color from "@/app/App/Utils/Color";
+import OptionItems from "./OptionItems";
 
 interface DetailSectionProps {
   course: Course;
@@ -20,9 +29,73 @@ export default function DetailSection({ course }: DetailSectionProps) {
           borderRadius: 15,
         }}
       />
-      <Text style={{ fontSize: 24, marginTop: 10, color: Color.PRIMARY }}>
-        {course?.name}
-      </Text>
+      <View style={{ padding: 10 }}>
+        <Text style={{ fontSize: 24, marginTop: 10, color: Color.PRIMARY }}>
+          {course?.name}
+        </Text>
+        <View>
+          <View style={styles.rowStyle}>
+            <OptionItems
+              icon="book-outline"
+              value={course?.capters?.length + " Chapter "}
+            />
+            <OptionItems icon="time-outline" value={course?.time + "Hr "} />
+          </View>
+          <View style={styles.rowStyle}>
+            <OptionItems icon="person-circle-outline" value={course?.author} />
+            <OptionItems icon="cellular-outline" value={course?.level} />
+          </View>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={{ maxHeight: 200 }}
+          >
+            <Text style={{ fontSize: 20 }}>Description</Text>
+            <Text style={{ color: Color.LIGHT_PRIMARY }}>
+              {course?.description?.markdown}
+            </Text>
+          </ScrollView>
+        </View>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 10,
+            justifyContent: "space-evenly",
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              backgroundColor: Color.PRIMARY,
+              borderRadius: 15,
+            }}
+          >
+            <Text style={{ color: Color.WHITE, textAlign: "center" }}>
+              Enroll for free
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              backgroundColor: Color.LIGHT_PRIMARY,
+              borderRadius: 15,
+            }}
+          >
+            <Text style={{ color: Color.WHITE, textAlign: "center" }}>
+              Membership $12.90/MOn
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  rowStyle: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+});

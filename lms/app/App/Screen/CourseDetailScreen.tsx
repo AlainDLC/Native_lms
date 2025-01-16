@@ -6,6 +6,7 @@ import Color from "../Utils/Color";
 import { useRoute, RouteProp } from "@react-navigation/native";
 import { Course } from "@/interface/course";
 import DetailSection from "../Components/HomeScreen/CourseDetailScreen/DetailSection";
+import ChapterSection from "../Components/HomeScreen/CourseDetailScreen/ChapterSection";
 
 export type RootStackParamList = {
   "course-detail": { course: Course };
@@ -27,8 +28,9 @@ export default function CourseDetailScreen() {
       <View style={{ padding: 20 }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={40} color={Color.LIGHT_PRIMARY} />
-          <DetailSection course={params?.course} />
         </TouchableOpacity>
+        <DetailSection course={params?.course} />
+        <ChapterSection />
       </View>
     )
   );
