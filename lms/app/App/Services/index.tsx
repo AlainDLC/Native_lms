@@ -15,11 +15,21 @@ export const getCourseList = async (level: string | undefined) => {
         banner {
           url
         }
-        capters {
-          id
-        }
         description {
           markdown
+        }
+        capters {
+          tilte
+          id
+          content {
+            heading
+            description {
+              markdown
+            }
+            output {
+              markdown
+            }
+          }
         }
       }
     }

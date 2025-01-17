@@ -1,15 +1,27 @@
 export interface Course {
-  id: string;
-  name: string;
-  description: {
+  id?: string;
+  name?: string;
+  description?: {
     markdown: string;
   };
-  level: string;
-  price: string | number;
-  time: string;
-  author: string;
-  banner: { url: string } | null;
-  capters: { id: string }[];
+  level?: string;
+  price?: string | number;
+  time?: string;
+  author?: string;
+  banner?: { url: string } | null;
+  capters?: {
+    id: string;
+    tilte: string;
+    content: {
+      heading: string;
+      description: {
+        markdown: string;
+      };
+      output: {
+        markdown: string;
+      };
+    };
+  }[];
 }
 
 export interface CourseItemProps {

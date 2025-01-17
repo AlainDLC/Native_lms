@@ -82,7 +82,7 @@ export default function DetailSection({ course }: DetailSectionProps) {
             }}
           >
             <Text style={{ color: Color.WHITE, textAlign: "center" }}>
-              Membership $12.90/MOn
+              Membership $12.90/Mon
             </Text>
           </TouchableOpacity>
         </View>

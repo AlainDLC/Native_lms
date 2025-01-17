@@ -7,6 +7,7 @@ import { useRoute, RouteProp } from "@react-navigation/native";
 import { Course } from "@/interface/course";
 import DetailSection from "../Components/HomeScreen/CourseDetailScreen/DetailSection";
 import ChapterSection from "../Components/HomeScreen/CourseDetailScreen/ChapterSection";
+import { ScrollView } from "react-native-gesture-handler";
 
 export type RootStackParamList = {
   "course-detail": { course: Course };
@@ -25,13 +26,13 @@ export default function CourseDetailScreen() {
 
   return (
     params?.course && (
-      <View style={{ padding: 20 }}>
+      <ScrollView style={{ padding: 20 }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={40} color={Color.LIGHT_PRIMARY} />
         </TouchableOpacity>
         <DetailSection course={params?.course} />
-        <ChapterSection />
-      </View>
+        <ChapterSection capters={params?.course?.capters} />
+      </ScrollView>
     )
   );
 }
