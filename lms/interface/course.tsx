@@ -4,7 +4,7 @@ export interface Course {
   description?: {
     markdown: string;
   };
-  level?: string;
+  level?: string | number;
   price?: string | number;
   time?: string;
   author?: string;
@@ -46,6 +46,6 @@ type IconName =
   | "person-circle-outline";
 
 export interface OptionItemProps {
-  value: string | number;
+  value: string | number | undefined;
   icon: IconName;
 }

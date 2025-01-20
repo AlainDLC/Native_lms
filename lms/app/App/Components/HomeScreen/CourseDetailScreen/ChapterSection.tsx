@@ -17,6 +17,7 @@ export default function ChapterSection({ capters }: Course) {
         <Text style={{ fontSize: 20 }}>Chapters</Text>
         {capters?.map((item, index) => (
           <View
+            key={index}
             style={{
               display: "flex",
               flexDirection: "row",

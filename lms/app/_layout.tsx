@@ -9,7 +9,12 @@ export default function App() {
   return (
     <ClerkProvider publishableKey={KEY || ""}>
       <View style={styles.container}>
-        <Tabnavigation />
+        <SignedIn>
+          <Tabnavigation />
+        </SignedIn>
+        <SignedOut>
+          <LoginScreen />
+        </SignedOut>
       </View>
     </ClerkProvider>
   );

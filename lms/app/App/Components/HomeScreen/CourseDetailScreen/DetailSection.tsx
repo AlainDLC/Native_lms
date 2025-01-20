@@ -12,11 +12,21 @@ import { Course } from "@/interface/course";
 import Color from "@/app/App/Utils/Color";
 import OptionItems from "./OptionItems";
 
-interface DetailSectionProps {
-  course: Course;
+interface UserEnrolledCourse {
+  id: string;
+  courseId: string;
+  completedChapter: any[];
 }
 
-export default function DetailSection({ course }: DetailSectionProps) {
+interface DetailSectionProps {
+  course: Course;
+  enrollCourse: () => void;
+}
+
+export default function DetailSection({
+  course,
+  enrollCourse,
+}: DetailSectionProps) {
   return (
     <View
       style={{ padding: 10, borderRadius: 15, backgroundColor: Color.WHITE }}
@@ -45,9 +55,10 @@ export default function DetailSection({ course }: DetailSectionProps) {
             <OptionItems icon="person-circle-outline" value={course?.author} />
             <OptionItems icon="cellular-outline" value={course?.level} />
           </View>
+
           <ScrollView
             showsVerticalScrollIndicator={false}
-            style={{ maxHeight: 200 }}
+            style={{ maxHeight: 160 }}
           >
             <Text style={{ fontSize: 20 }}>Description</Text>
             <Text style={{ color: Color.LIGHT_PRIMARY }}>
@@ -64,6 +75,7 @@ export default function DetailSection({ course }: DetailSectionProps) {
           }}
         >
           <TouchableOpacity
+            onPress={() => enrollCourse()}
             style={{
               padding: 10,
               backgroundColor: Color.PRIMARY,
@@ -74,6 +86,7 @@ export default function DetailSection({ course }: DetailSectionProps) {
               Enroll for free
             </Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={{
               padding: 10,
