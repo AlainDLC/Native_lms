@@ -12,21 +12,18 @@ import { Course } from "@/interface/course";
 import Color from "@/app/App/Utils/Color";
 import OptionItems from "./OptionItems";
 
-interface UserEnrolledCourse {
-  id: string;
-  courseId: string;
-  completedChapter: any[];
-}
-
 interface DetailSectionProps {
   course: Course;
   enrollCourse: () => void;
+  userEnrolledCourse: any;
 }
 
 export default function DetailSection({
   course,
   enrollCourse,
+  userEnrolledCourse,
 }: DetailSectionProps) {
+  console.log(userEnrolledCourse);
   return (
     <View
       style={{ padding: 10, borderRadius: 15, backgroundColor: Color.WHITE }}
@@ -74,18 +71,20 @@ export default function DetailSection({
             justifyContent: "space-evenly",
           }}
         >
-          <TouchableOpacity
-            onPress={() => enrollCourse()}
-            style={{
-              padding: 10,
-              backgroundColor: Color.PRIMARY,
-              borderRadius: 15,
-            }}
-          >
-            <Text style={{ color: Color.WHITE, textAlign: "center" }}>
-              Enroll for free
-            </Text>
-          </TouchableOpacity>
+          {userEnrolledCourse?.length === 0 && userEnrolledCourse ? (
+            <TouchableOpacity
+              onPress={() => enrollCourse()}
+              style={{
+                padding: 10,
+                backgroundColor: Color.PRIMARY,
+                borderRadius: 15,
+              }}
+            >
+              <Text style={{ color: Color.WHITE, textAlign: "center" }}>
+                Enroll for free
+              </Text>
+            </TouchableOpacity>
+          ) : null}
 
           <TouchableOpacity
             style={{

@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigation } from "expo-router";
 import Color from "../Utils/Color";
 import { useRoute, RouteProp } from "@react-navigation/native";
@@ -8,7 +8,7 @@ import { Course } from "@/interface/course";
 import DetailSection from "../Components/HomeScreen/CourseDetailScreen/DetailSection";
 import ChapterSection from "../Components/HomeScreen/CourseDetailScreen/ChapterSection";
 import { ScrollView } from "react-native-gesture-handler";
-import { enrollCourse } from "../Services";
+import { enrollCourse, getEnrollCourse } from "../Services";
 import { useUser } from "@clerk/clerk-expo";
 
 export type RootStackParamList = {
@@ -18,21 +18,30 @@ export type RootStackParamList = {
 type CourseDetailRouteProp = RouteProp<RootStackParamList, "course-detail">;
 
 export default function CourseDetailScreen() {
+  const [userEnrolledCourse, setUserEnrolledCourse] = useState([]);
   const navigation = useNavigation();
   const params = useRoute<CourseDetailRouteProp>().params;
   const { user } = useUser();
 
   useEffect(() => {
-    if (params?.course) {
+    if (user && params?.course) {
+      GetEnrolledCourse();
     }
-  }, [params?.course]);
+  }, [params?.course, user]);
 
   const UserEnrolledCourse = () => {
     enrollCourse(
       params?.course?.id,
       user?.primaryEmailAddress?.emailAddress
+    ).then((resp) => {});
+  };
+
+  const GetEnrolledCourse = () => {
+    getEnrollCourse(
+      params?.course?.id,
+      user?.primaryEmailAddress?.emailAddress
     ).then((resp) => {
-      console.log(resp);
+      setUserEnrolledCourse(resp?.userEnrolledCourses);
     });
   };
   return (
@@ -44,6 +53,7 @@ export default function CourseDetailScreen() {
         <DetailSection
           course={params?.course}
           enrollCourse={() => UserEnrolledCourse()}
+          userEnrolledCourse={userEnrolledCourse}
         />
         <ChapterSection capters={params?.course?.capters} />
       </ScrollView>

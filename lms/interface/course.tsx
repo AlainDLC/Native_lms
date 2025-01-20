@@ -49,3 +49,9 @@ export interface OptionItemProps {
   value: string | number | undefined;
   icon: IconName;
 }
+
+export type EnrolledCourse = {
+  completedChapter: string[];
+  courseId: string;
+  id: string;
+};

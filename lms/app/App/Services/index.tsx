@@ -34,14 +34,22 @@ export const getCourseList = async (level: string | undefined) => {
       }
     }
   `;
-  const result = await request(MASTER_URL, query);
-  return result;
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching enrolled course:", error);
+    throw error;
+  }
 };
 
 export const enrollCourse = async (
   courseId: string | undefined,
   userEmail: string | undefined
 ) => {
+  if (!courseId || !userEmail) {
+    throw new Error("Course ID or User Email is missing");
+  }
   const query =
     gql`
     mutation MyMutation {
@@ -70,6 +78,42 @@ export const enrollCourse = async (
         
     }
   `;
-  const result = await request(MASTER_URL, query);
-  return result;
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching enrolled course:", error);
+    throw error;
+  }
+};
+
+export const getEnrollCourse = async (
+  courseId: string | undefined,
+  userEmail: string | undefined
+) => {
+  if (!courseId || !userEmail) {
+    throw new Error("Course ID or User Email is missing");
+  }
+
+  const query = gql`
+    query MyQuery {
+      userEnrolledCourses(
+        where: { courseId: "${courseId}", userEmail: "${userEmail}" }
+      ) {
+        id
+        courseId
+        completedChapter {
+          chapterid
+        }
+      }
+    }
+  `;
+
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching enrolled course:", error);
+    throw error;
+  }
 };
