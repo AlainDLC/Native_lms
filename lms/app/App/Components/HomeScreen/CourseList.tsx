@@ -44,7 +44,7 @@ export default function CourseList({ level }: LevelProps) {
               navigation.navigate("course-detail", { course: item })
             }
           >
-            <CourseItem item={item} />
+            <CourseItem item={item as any} />
           </TouchableOpacity>
         )}
       />
