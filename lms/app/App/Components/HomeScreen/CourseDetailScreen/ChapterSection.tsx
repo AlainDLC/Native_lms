@@ -3,7 +3,10 @@ import { Course } from "@/interface/course";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Color from "@/app/App/Utils/Color";
 
-export default function ChapterSection({ capters }: Course) {
+export default function ChapterSection({
+  capters,
+  userEnrolledCourse,
+}: Course) {
   return (
     capters && (
       <View
@@ -46,7 +49,11 @@ export default function ChapterSection({ capters }: Course) {
                 {item.tilte}
               </Text>
             </View>
-            <Ionicons name="lock-closed" size={20} color="#8b8686ce" />
+            {userEnrolledCourse?.length === 0 && userEnrolledCourse ? (
+              <Ionicons name="lock-closed" size={20} color="#8b8686ce" />
+            ) : (
+              <Ionicons name="play" size={20} color="#8b8686ce" />
+            )}
           </View>
         ))}
       </View>

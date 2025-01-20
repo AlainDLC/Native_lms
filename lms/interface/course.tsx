@@ -1,4 +1,5 @@
 export interface Course {
+  userEnrolledCourse?: any;
   id?: string;
   name?: string;
   description?: {
@@ -43,7 +44,8 @@ type IconName =
   | "celluar-outline"
   | "map-marker"
   | "time-outline"
-  | "person-circle-outline";
+  | "person-circle-outline"
+  | "play";
 
 export interface OptionItemProps {
   value: string | number | undefined;
