@@ -23,7 +23,6 @@ export default function DetailSection({
   enrollCourse,
   userEnrolledCourse,
 }: DetailSectionProps) {
-  console.log(userEnrolledCourse);
   return (
     <View
       style={{ padding: 10, borderRadius: 15, backgroundColor: Color.WHITE }}

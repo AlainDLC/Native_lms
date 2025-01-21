@@ -1,15 +1,26 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import Content from "../Components/ChapterContent/Content";
-import { useRoute } from "@react-navigation/native";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { ContentProps } from "@/interface/course";
 
-export default function ChapterContentScreen() {
-  const param = useRoute().params;
+export type RootStackParamList = {
+  ChapterContentScreen: { content: string | undefined };
+};
+
+export default function ChapterContentScreen(): JSX.Element | null {
+  const route =
+    useRoute<RouteProp<RootStackParamList, "ChapterContentScreen">>();
+
+  const { content } = route.params;
+
+  if (!content) {
+    return null;
+  }
+
   return (
-    param?.content && (
-      <View>
-        <Content content={param?.content} />
-      </View>
-    )
+    <View>
+      <Content content={content as any} />
+    </View>
   );
 }

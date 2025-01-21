@@ -25,9 +25,11 @@ export const getCourseList = async (level: string | undefined) => {
             heading
             description {
               markdown
+              html
             }
             output {
               markdown
+              html
             }
           }
         }

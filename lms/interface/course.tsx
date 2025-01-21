@@ -17,9 +17,11 @@ export interface Course {
       heading: string;
       description: {
         markdown: string;
+        html: string;
       };
       output: {
         markdown: string;
+        html: string;
       };
     };
   }[];
@@ -57,3 +59,17 @@ export type EnrolledCourse = {
   courseId: string;
   id: string;
 };
+
+export interface ContentProps {
+  content: {
+    heading: string;
+    description: {
+      markdown: string;
+      html: string;
+    };
+    output: {
+      html: any;
+      markdown: string;
+    };
+  }[];
+}

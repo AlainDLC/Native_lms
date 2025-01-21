@@ -15,6 +15,7 @@ export default function ProgressBar({
     { length: contentLength },
     (_, index) => index + 1
   );
+
   const width = 100 / contentLength;
   return (
     <View
@@ -23,6 +24,7 @@ export default function ProgressBar({
         flexDirection: "row",
         justifyContent: "space-between",
         marginTop: 10,
+        padding: 20,
       }}
     >
       {arrSize?.map((item, index) => (
@@ -32,7 +34,7 @@ export default function ProgressBar({
             backgroundColor: `${
               index <= contentIndex ? Color.PRIMARY : Color.LIGHT_PRIMARY
             }`,
-            width: width,
+            width: `${width}%`,
             borderRadius: 10,
             height: 10,
             margin: 5,
